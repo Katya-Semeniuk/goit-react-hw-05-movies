@@ -4,7 +4,11 @@ import { fetchTrendMovies } from '../api/API';
 const Home = () => {
   const [trendMovies, settrendMovies] = useState([]);
   useEffect(() => {
-    fetchTrendMovies().then(({ data }) => console.log(data.results));
+    fetchTrendMovies().then(({ data }) => {
+      const arrayOfMovies = data.results;
+      console.log(arrayOfMovies);
+      settrendMovies(prevState => [...prevState, ...arrayOfMovies]);
+    });
   }, []);
 
   return (

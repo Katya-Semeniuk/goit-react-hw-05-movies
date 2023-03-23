@@ -5,26 +5,24 @@ const BASE_URL = 'https://api.themoviedb.org/3/movie?';
 
 
 
-export const fetchTrendMovies = () => {
-    return axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
-    )
-};
-     
-        
-// const fetchMovie = async () => {
-// 	try {
-// 		const res = await axios.get(`BASE_URL`, {
-// 			params: {
-//           api_key: API_KEY,
-//           query: this.searchQuery,
-//           page: this.page,
-//           include_adult: false,
-//         },
-// 		});
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
+// export const fetchTrendMovies = () => {
+//     return axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
+//     )
 // };
+     
+export const fetchTrendMovies = async () => { 
+    try { 
+        const responcse = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
+        );
+        return responcse;
+    }
+    
+    catch (error) {
+        console.log(error); 
+    }
+};
+
+
 
 
 
