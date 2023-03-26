@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchMovieById } from '../../api/API';
 import Loader from '../Loader/Loader';
 import {
@@ -23,7 +24,6 @@ const MovieCard = () => {
 
     fetchMovieById(id)
       .then(({ data }) => {
-        console.log(data);
         setmovieInfo(data);
         setStatus('resolved');
       })
@@ -44,7 +44,7 @@ const MovieCard = () => {
     vote_average,
     release_date,
     belongs_to_collection,
-    backdrop_path,
+    // backdrop_path,
     poster_path,
   } = movieInfo;
 
@@ -71,6 +71,10 @@ const MovieCard = () => {
           </List>
         </div>
       )}
+      <div>
+        <Link to="">Cast</Link>
+        <Link to="">Review</Link>
+      </div>
     </Container>
   );
 };

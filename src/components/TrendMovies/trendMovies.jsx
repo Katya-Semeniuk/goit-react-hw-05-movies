@@ -11,7 +11,9 @@ const TrendMovies = ({ trendMovies }) => {
         {trendMovies.map(({ id, title, name }) => {
           return (
             <Item key={id}>
-              <StyledLink to={generatePath(PAGE_NAMES.aboutMovie, { id: id })}>
+              <StyledLink
+                to={generatePath(PAGE_NAMES.aboutMovie, { movieId: id })}
+              >
                 {title ? title : name}
               </StyledLink>
             </Item>
