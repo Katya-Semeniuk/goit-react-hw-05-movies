@@ -9,6 +9,7 @@ const TrendMovies = ({ trendMovies }) => {
       <Header>Trending today</Header>
       <ul>
         {trendMovies.map(({ id, title, name }) => {
+          // console.log(trendMovies);
           return (
             <Item key={id}>
               <StyledLink

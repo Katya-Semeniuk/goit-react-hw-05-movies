@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+// import { PAGE_NAMES } from '../router/path';
 import { fetchMovieById } from '../../api/API';
 import Loader from '../Loader/Loader';
 import {
@@ -11,10 +12,15 @@ import {
   List,
   Item,
   Paragraph,
+  Section,
+  Caption,
+  AddInfoList,
+  InfoItem,
+  StyledLink,
 } from './MovieCard.styled';
 
 const MovieCard = () => {
-  const { id } = useParams();
+  const { movieId } = useParams();
   // debugger;
   const [movieInfo, setmovieInfo] = useState({});
   const [status, setStatus] = useState('');
@@ -22,7 +28,7 @@ const MovieCard = () => {
   useEffect(() => {
     setStatus('pending');
 
-    fetchMovieById(id)
+    fetchMovieById(movieId)
       .then(({ data }) => {
         setmovieInfo(data);
         setStatus('resolved');
@@ -31,7 +37,7 @@ const MovieCard = () => {
         console.log(error.message);
         setStatus('error');
       });
-  }, [id]);
+  }, [movieId]);
 
   if (status === 'error') {
     return <>Something was wrong</>;
@@ -71,10 +77,23 @@ const MovieCard = () => {
           </List>
         </div>
       )}
-      <div>
-        <Link to="">Cast</Link>
-        <Link to="">Review</Link>
-      </div>
+
+      <Section>
+        <Caption>Additional information</Caption>
+        <AddInfoList>
+          <InfoItem>
+            <StyledLink to="cast" replace>
+              Cast
+            </StyledLink>
+          </InfoItem>
+          <InfoItem>
+            <StyledLink to="reviews" replace>
+              Review
+            </StyledLink>
+          </InfoItem>
+        </AddInfoList>
+      </Section>
+      <Outlet />
     </Container>
   );
 };
