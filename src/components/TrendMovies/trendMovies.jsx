@@ -9,7 +9,6 @@ const TrendMovies = ({ trendMovies }) => {
       <Header>Trending today</Header>
       <ul>
         {trendMovies.map(({ id, title, name }) => {
-          //   console.log(id);
           return (
             <Item key={id}>
               <StyledLink to={generatePath(PAGE_NAMES.aboutMovie, { id: id })}>
@@ -28,5 +27,3 @@ export default TrendMovies;
 TrendMovies.propTypes = {
   trendMovies: PropTypes.arrayOf(PropTypes.shape()),
 };
-
-// {`/movie/${id}`}

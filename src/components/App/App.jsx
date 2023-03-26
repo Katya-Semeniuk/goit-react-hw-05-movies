@@ -21,6 +21,9 @@ export const App = () => {
         <Route path={PAGE_NAMES.aboutMovie} element={<MovieDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <footer>
+        <div>Contact us</div>
+      </footer>
     </Container>
   );
 };

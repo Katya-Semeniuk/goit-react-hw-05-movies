@@ -18,7 +18,6 @@ margin-bottom: 5px;
 }`;
 
 export const StyledLink = styled(Link)`
-text-decoration: none;
 color: black;
 &:hover{
     color: rgb(181 11 158);
