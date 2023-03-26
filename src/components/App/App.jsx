@@ -26,7 +26,3 @@ export const App = () => {
     </Container>
   );
 };
-
-// KEY  991596626fb93000a24867e82c352474
-
-// API    https://api.themoviedb.org/3/movie/550?api_key=991596626fb93000a24867e82c352474

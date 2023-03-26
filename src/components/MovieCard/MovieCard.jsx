@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-// import { PAGE_NAMES } from '../router/path';
 import { fetchMovieById } from '../../api/API';
 import Loader from '../Loader/Loader';
 import {
