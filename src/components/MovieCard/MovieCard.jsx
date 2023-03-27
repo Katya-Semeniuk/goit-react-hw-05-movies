@@ -25,10 +25,14 @@ const MovieCard = () => {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
+    if (!movieId) {
+      return;
+    }
     setStatus('pending');
 
     fetchMovieById(movieId)
       .then(({ data }) => {
+        // console.log(data);
         setmovieInfo(data);
         setStatus('resolved');
       })
@@ -36,6 +40,9 @@ const MovieCard = () => {
         console.log(error.message);
         setStatus('error');
       });
+    // return () => {
+    //   console.log('вихід з функції');
+    // };
   }, [movieId]);
 
   if (status === 'error') {

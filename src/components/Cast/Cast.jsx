@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCastById } from '../../api/API';
 import Loader from '../Loader/Loader';
+import { CastList, Kind } from './Cast.styled';
 
 const Cast = () => {
   const [castInfo, setCastInfo] = useState({});
@@ -11,6 +12,7 @@ const Cast = () => {
   useEffect(() => {
     setStatus('pending');
     fetchCastById(movieId).then(({ data }) => {
+      console.log(data);
       setCastInfo(data);
       setStatus('resolved');
     });
@@ -27,17 +29,17 @@ const Cast = () => {
       {status === 'pending' && <Loader />}
       {status === 'resolved' && (
         <div>
-          <ul>
-            {cast.map(({ id, name, known_for_department }) => {
+          <CastList>
+            {cast.map(({ id, name, character, profile_path }) => {
               return (
                 <li key={id}>
-                  <img src="" alt={name} />
-                  <p>{name}</p>
-                  <p>{known_for_department}</p>
+                  <img src={profile_path} alt="" />
+                  <div>{name}</div>
+                  <Kind>{character}</Kind>
                 </li>
               );
             })}
-          </ul>
+          </CastList>
         </div>
       )}
     </>

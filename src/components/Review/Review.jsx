@@ -22,24 +22,6 @@ const Review = () => {
   }
 
   return (
-    // <>
-    //   {status === 'pending' && <Loader />}
-    //   {status === 'resolved' && (
-    //     <div>
-    //       <ul>
-    //         {reviewInfo.map(({ id, author, content }) => {
-    //           return (
-    //             <li key={id}>
-    //               <p> Author: {author}</p>
-    //               <p>{content}</p>
-    //             </li>
-    //           );
-    //         })}
-    //       </ul>
-    //     </div>
-    //   )}
-    // </>
-
     <>
       {status === 'pending' && <Loader />}
       {status === 'resolved' && reviewInfo.length > 0 ? (
