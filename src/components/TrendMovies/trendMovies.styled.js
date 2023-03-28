@@ -11,7 +11,6 @@ font-size: 25px`;
 
 export const Item = styled.li`
 margin-bottom: 5px;
-/* list-style-type: square; */
 
 &:last-child {
     margin-bottom: 0px; 

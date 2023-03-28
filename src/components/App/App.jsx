@@ -1,13 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../../pages/Home';
+import { lazy } from 'react';
+
 import Layuot from '../Layout/Layout';
-import Movies from '../../pages/Movies';
-import NotFound from '../../pages/NotFound';
-import MovieDetails from '../../pages/MovieDetails';
 import Cast from '../Cast/Cast';
 import Review from '../Review/Review';
 import { PAGE_NAMES } from '../router/path';
 import { Container } from './App.styled';
+
+const Home = lazy(() => import('../../pages/Home'));
+const Movies = lazy(() => import('../../pages/Movies'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
 
 export const App = () => {
   return (

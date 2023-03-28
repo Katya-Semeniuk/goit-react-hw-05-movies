@@ -11,8 +11,6 @@ const Home = () => {
     setStatus('pending');
     fetchTrendMovies().then(({ data }) => {
       const arrayOfMovies = data.results;
-      // console.log(arrayOfMovies);
-      // console.log('trendMovies');
       settrendMovies(prevState => [...prevState, ...arrayOfMovies]);
       setStatus('resolved');
     });

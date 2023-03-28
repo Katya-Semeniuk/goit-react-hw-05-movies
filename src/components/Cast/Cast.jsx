@@ -12,7 +12,6 @@ const Cast = () => {
   useEffect(() => {
     setStatus('pending');
     fetchCastById(movieId).then(({ data }) => {
-      console.log(data);
       setCastInfo(data);
       setStatus('resolved');
     });

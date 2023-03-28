@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import { fetchMovieById } from '../../api/API';
 import Loader from '../Loader/Loader';
 import {
@@ -32,7 +33,6 @@ const MovieCard = () => {
 
     fetchMovieById(movieId)
       .then(({ data }) => {
-        // console.log(data);
         setmovieInfo(data);
         setStatus('resolved');
       })
@@ -40,9 +40,6 @@ const MovieCard = () => {
         console.log(error.message);
         setStatus('error');
       });
-    // return () => {
-    //   console.log('вихід з функції');
-    // };
   }, [movieId]);
 
   if (status === 'error') {
@@ -99,7 +96,9 @@ const MovieCard = () => {
           </InfoItem>
         </AddInfoList>
       </Section>
-      <Outlet />
+      <Suspense fallback={<div>LOADING</div>}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };

@@ -1,20 +1,32 @@
-import { useLocation } from 'react-router-dom';
-import { Wrapper } from './MoviesList.styled';
+import { useLocation, generatePath } from 'react-router-dom';
+import { Wrapper, Item, StyledLink } from './MoviesList.styled';
+import { PAGE_NAMES } from '../router/path';
+import PropTypes from 'prop-types';
 
 const MoviesList = ({ filteredmovies }) => {
   const location = useLocation();
+
   return (
     <Wrapper>
       <ul>
         {filteredmovies.map(({ id, title }) => (
-          <div key={id}>
-            <h3>{title}</h3>
-          </div>
+          <Item key={id}>
+            <StyledLink
+              to={generatePath(PAGE_NAMES.aboutMovie, { movieId: id })}
+              state={{ from: location }}
+            >
+              {' '}
+              {title}
+            </StyledLink>
+          </Item>
         ))}
-        <p>MoviesList</p>
       </ul>
     </Wrapper>
   );
 };
 
 export default MoviesList;
+
+MoviesList.propTypes = {
+  trendMovies: PropTypes.arrayOf(PropTypes.shape()),
+};
