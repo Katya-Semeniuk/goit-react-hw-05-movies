@@ -1,6 +1,5 @@
 import { Wrapper, Icon, Input } from './SearchBox.styled';
 import PropTypes from 'prop-types';
-import { DebounceInput } from 'react-debounce-input';
 
 const SearchBox = ({ value, onChange }) => {
   return (
