@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { HiSearch } from "react-icons/hi";
+import { DebounceInput } from 'react-debounce-input';
 
 export const Wrapper = styled.div`
   display: inline-flex;
@@ -11,7 +12,7 @@ export const Wrapper = styled.div`
 `;
 Wrapper.displayName = 'Wrapper';
 
-export const Input = styled.input`
+export const Input = styled(DebounceInput)`
   padding: 8px 32px 8px 8px;
   border-radius: 4px;
   font: inherit;

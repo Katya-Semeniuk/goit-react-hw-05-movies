@@ -33,3 +33,13 @@ export default TrendMovies;
 TrendMovies.propTypes = {
   trendMovies: PropTypes.arrayOf(PropTypes.shape()),
 };
+
+TrendMovies.propTypes = {
+  trendMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+};

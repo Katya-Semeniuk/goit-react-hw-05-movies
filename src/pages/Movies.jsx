@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+// import debounce from 'lodash.debounce';
 import { searchMovies } from '../api/API';
 import SearchBox from '../components/SearchBox/SearchBox';
 import MoviesList from '../components/MoviesList/MoviesList';
@@ -28,6 +29,7 @@ const Movies = () => {
   }, [movieName]);
 
   const updateQueryString = name => {
+    console.log('updateQueryString');
     if (name === '') {
       return setSearchParams({});
     }

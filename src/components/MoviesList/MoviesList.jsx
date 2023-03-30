@@ -28,5 +28,10 @@ const MoviesList = ({ filteredmovies }) => {
 export default MoviesList;
 
 MoviesList.propTypes = {
-  trendMovies: PropTypes.arrayOf(PropTypes.shape()),
+  filteredmovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      title: PropTypes.string,
+    })
+  ),
 };
