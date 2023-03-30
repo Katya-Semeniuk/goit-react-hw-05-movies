@@ -6,6 +6,9 @@ import { fetchMovieById } from '../../api/API';
 import Loader from '../Loader/Loader';
 import {
   Container,
+  Wrap,
+  Image,
+  WrapInfo,
   Title,
   Subtitle,
   Overwiew,
@@ -53,9 +56,10 @@ const MovieCard = () => {
     vote_average,
     release_date,
     belongs_to_collection,
-    // backdrop_path,
     poster_path,
   } = movieInfo;
+
+  console.log(poster_path);
 
   const date = new Date(release_date);
   const year = date.getFullYear();
@@ -64,21 +68,26 @@ const MovieCard = () => {
     <Container>
       {status === 'pending' && <Loader />}
       {status === 'resolved' && (
-        <div>
-          <img src={poster_path} alt="poster" />
-          <Title>
-            {title === null ? belongs_to_collection.name : title} ({year})
-          </Title>
-          <Paragraph>User Score: {Math.round(vote_average)}</Paragraph>
-          <Subtitle>Overwiew</Subtitle>
-          <Overwiew>{overview}</Overwiew>
-          <Subtitle>Genres</Subtitle>
-          <List>
-            {genres.map(({ id, name }) => {
-              return <Item key={id}>{name}</Item>;
-            })}
-          </List>
-        </div>
+        <Wrap>
+          <Image
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt="poster"
+          />
+          <WrapInfo>
+            <Title>
+              {title === null ? belongs_to_collection.name : title} ({year})
+            </Title>
+            <Paragraph>User Score: {Math.round(vote_average)}</Paragraph>
+            <Subtitle>Overwiew</Subtitle>
+            <Overwiew>{overview}</Overwiew>
+            <Subtitle>Genres</Subtitle>
+            <List>
+              {genres.map(({ id, name }) => {
+                return <Item key={id}>{name}</Item>;
+              })}
+            </List>
+          </WrapInfo>
+        </Wrap>
       )}
 
       <Section>
